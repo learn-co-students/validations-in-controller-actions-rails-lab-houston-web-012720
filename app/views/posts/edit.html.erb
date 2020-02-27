@@ -1,5 +1,12 @@
 <h2>Editing "<%= @post.title %>"</h2>
 <%= form_tag post_path(@post), method: "patch" do %>
+  <% if flash[:errors] %>  
+    <ul>
+    <% flash[:errors].each do |e| %> 
+      <li><%= e %></li>
+    <% end %>
+    </ul>
+  <% end %>
   <div class="field">
     <%= label_tag "title", "Title" %>
     <%= text_field_tag "title", @post.title %>
