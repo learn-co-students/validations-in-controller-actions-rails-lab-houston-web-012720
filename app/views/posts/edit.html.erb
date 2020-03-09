@@ -1,4 +1,13 @@
 <h2>Editing "<%= @post.title %>"</h2>
+<%if flash[:errors]%>
+  <ul>
+    <%flash[:errors].each {|error|%>
+    <li style="{color: red;}">
+      <%=error%>
+    </li>
+    <%}%>
+  </ul>
+<%end%>
 <%= form_tag post_path(@post), method: "patch" do %>
   <div class="field">
     <%= label_tag "title", "Title" %>
